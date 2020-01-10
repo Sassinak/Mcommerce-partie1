@@ -1,0 +1,156 @@
+{
+	"id": "5328b3e5-335f-4fba-b310-0c5a0529ce93",
+	"name": "SdZ_Microcommerce",
+	"allTests": [],
+	"timestamp": "2020-01-10T18:17:15.514Z",
+	"collection_id": "9003cb76-f381-4b11-ad7f-19deed4ef883",
+	"folder_id": 0,
+	"target_type": "collection",
+	"environment_id": "0",
+	"data": [],
+	"delay": 0,
+	"count": 1,
+	"collection": {
+		"id": "9003cb76-f381-4b11-ad7f-19deed4ef883",
+		"name": "SdZ_Microcommerce",
+		"order": [
+			"27abd6f0-a0dc-4bd6-9aae-41b5fb70826d",
+			"235b8cc4-53a0-4a12-a09d-f6cbd087007f",
+			"8c555bbf-81bf-4add-b0f8-c89f0e83f3fd"
+		],
+		"folders_order": [],
+		"isFavorite": false
+	},
+	"folder": null,
+	"environment": null,
+	"globals": null,
+	"results": [
+		{
+			"name": "http://localhost:9090/AdminProduits",
+			"id": "27abd6f0-a0dc-4bd6-9aae-41b5fb70826d",
+			"url": "http://localhost:9090/AdminProduits",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				"9"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "9",
+			"totalRequestTime": "9",
+			"iterationResults": {}
+		},
+		{
+			"name": "http://localhost:9090/Produits/alphanum",
+			"id": "235b8cc4-53a0-4a12-a09d-f6cbd087007f",
+			"url": "http://localhost:9090/Produits/alphanum",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				"7"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "7",
+			"totalRequestTime": "7",
+			"iterationResults": {}
+		},
+		{
+			"name": "http://localhost:9090/Produits",
+			"id": "8c555bbf-81bf-4add-b0f8-c89f0e83f3fd",
+			"url": "http://localhost:9090/Produits",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 418,
+				"name": "I'm a teapot (RFC 2324)",
+				"detail": {
+					"name": "I'm a teapot (RFC 2324)",
+					"detail": "This code was defined in 1998 as one of the traditional IETF April Fools' jokes, in RFC 2324, Hyper Text Coffee Pot Control Protocol, and is not expected to be implemented by actual HTTP servers. However, known implementations do exist."
+				}
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				"7"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "7",
+			"totalRequestTime": "7",
+			"iterationResults": {}
+		}
+	],
+	"totalPass": 0,
+	"totalFail": 0,
+	"totalTime": 23,
+	"lifecycle": "done",
+	"requests": [
+		{
+			"name": "http://localhost:9090/AdminProduits",
+			"id": "27abd6f0-a0dc-4bd6-9aae-41b5fb70826d",
+			"url": "http://localhost:9090/AdminProduits",
+			"time": "2020-01-10T18:17:15.514Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {}
+		},
+		{
+			"name": "http://localhost:9090/Produits/alphanum",
+			"id": "235b8cc4-53a0-4a12-a09d-f6cbd087007f",
+			"url": "http://localhost:9090/Produits/alphanum",
+			"time": "2020-01-10T18:17:15.514Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {}
+		},
+		{
+			"name": "http://localhost:9090/Produits",
+			"id": "8c555bbf-81bf-4add-b0f8-c89f0e83f3fd",
+			"url": "http://localhost:9090/Produits",
+			"time": "2020-01-10T18:17:15.514Z",
+			"responseCode": {
+				"code": 418,
+				"name": "I'm a teapot (RFC 2324)",
+				"detail": {
+					"name": "I'm a teapot (RFC 2324)",
+					"detail": "This code was defined in 1998 as one of the traditional IETF April Fools' jokes, in RFC 2324, Hyper Text Coffee Pot Control Protocol, and is not expected to be implemented by actual HTTP servers. However, known implementations do exist."
+				}
+			},
+			"testPassFailCounts": {}
+		}
+	],
+	"synced": false
+}
