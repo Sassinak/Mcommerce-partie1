@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
 
+//notre classe de produit
+
 @Entity
 //@JsonFilter("monFiltreDynamique")
 public class Product {
@@ -71,13 +73,14 @@ public class Product {
         this.prixAchat = prixAchat;
     }
 
+/*  Methode deplacees dans ProductService
     public int margeProduit(){
         return this.prix - this.prixAchat;
     }
     public String afficherMargeProduit(){
         int marge = this.margeProduit();
         return this.toString() + ": " + marge ;
-    }
+    }*/
 
     @Override
     public String toString() {

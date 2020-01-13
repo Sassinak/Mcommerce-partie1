@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+//Cette classe permet d'interagir avec Product avec les outils de JpaRepository pour les requetes SQL
 @Repository
 public interface ProductDao extends JpaRepository<Product, Integer> {
 

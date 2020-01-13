@@ -2,6 +2,7 @@ package com.ecommerce.microcommerce.web.controller;
 
 import com.ecommerce.microcommerce.dao.ProductDao;
 import com.ecommerce.microcommerce.model.Product;
+import com.ecommerce.microcommerce.service.ProductService;
 import com.ecommerce.microcommerce.web.exceptions.ProduitGratuitException;
 import com.ecommerce.microcommerce.web.exceptions.ProduitIntrouvableException;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
@@ -17,9 +18,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+//cette classe cree/affiche les pages de notre micro-site
 
 @Api( value = "description: API pour les opérations CRUD sur les produits.")
 
@@ -28,6 +31,8 @@ public class ProductController {
 
     @Autowired
     private ProductDao productDao;
+
+    private final ProductService ps = new ProductService();
 
 
     //Récupérer la liste des produits
@@ -46,7 +51,7 @@ public class ProductController {
     }
 
     @GetMapping(value = "/Produits/alphanum")
-    public List<Product> trierProduitsParOrdreAlphabetique(){
+    public List<Product> trierProduitsParOrdreAlphabetique() {
         return productDao.findAllByOrderByNomAsc();
     }
 
@@ -59,7 +64,8 @@ public class ProductController {
 
         Product produit = productDao.findById(id);
 
-        if(produit==null) throw new ProduitIntrouvableException("Le produit avec l'id " + id + " est INTROUVABLE. Écran Bleu si je pouvais.");
+        if (produit == null)
+            throw new ProduitIntrouvableException("Le produit avec l'id " + id + " est INTROUVABLE. Écran Bleu si je pouvais.");
 
         return produit;
     }
@@ -69,9 +75,9 @@ public class ProductController {
 
     public ResponseEntity<Void> ajouterProduit(@Valid @RequestBody Product product) {
 
-        if(product.getPrix() == 0) throw new ProduitGratuitException("Rien n'est gratuit.");
+        if (product.getPrix() == 0) throw new ProduitGratuitException("Rien n'est gratuit.");
 
-        Product productAdded =  productDao.save(product);
+        Product productAdded = productDao.save(product);
 
         if (productAdded == null)
             return ResponseEntity.noContent().build();
@@ -85,13 +91,13 @@ public class ProductController {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping (value = "/Produits/{id}")
+    @DeleteMapping(value = "/Produits/{id}")
     public void supprimerProduit(@PathVariable int id) {
 
         productDao.delete(id);
     }
 
-    @PutMapping (value = "/Produits")
+    @PutMapping(value = "/Produits")
     public void updateProduit(@RequestBody Product product) {
 
         productDao.save(product);
@@ -100,23 +106,31 @@ public class ProductController {
 
     //Pour les tests
     @GetMapping(value = "test/produits/{prix}")
-    public List<Product>  testeDeRequetes(@PathVariable int prix) {
+    public List<Product> testeDeRequetes(@PathVariable int prix) {
 
-        return productDao.chercherUnProduitCher(400);
+        return productDao.chercherUnProduitCher(prix);
     }
 
 
     @GetMapping(value = "/AdminProduits")
-    public List<String>calculerMargeProduit(){
+    //public List<String>calculerMargeProduit(){
+    //List<String> Lstring = new ArrayList<String>();
 
+    public Map<Product, Integer> calculerMargeProduit()
+    {
         List<Product> Lproduit = productDao.findAll();
-        List<String> Lstring = new ArrayList<String>();
-        for(Product p: Lproduit){
-            String str = p.afficherMargeProduit();
-            Lstring.add(str);
-        }
-        return Lstring;
-    }
+        Map<Product, Integer> liste = new HashMap<>();
 
+        for (Product p : Lproduit) {
+
+            Integer marge = ps.margeProduit(p); //p.getPrix() - p.getPrixAchat();
+            liste.put(p, marge); // p.margeProduit());
+
+//            String str = p.afficherMargeProduit();
+//            Lstring.add(str);
+        }
+        // return Lstring;
+        return liste;
+    }
 
 }
