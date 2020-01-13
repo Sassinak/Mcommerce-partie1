@@ -73,15 +73,6 @@ public class Product {
         this.prixAchat = prixAchat;
     }
 
-/*  Methode deplacees dans ProductService
-    public int margeProduit(){
-        return this.prix - this.prixAchat;
-    }
-    public String afficherMargeProduit(){
-        int marge = this.margeProduit();
-        return this.toString() + ": " + marge ;
-    }*/
-
     @Override
     public String toString() {
         return "Product{" +

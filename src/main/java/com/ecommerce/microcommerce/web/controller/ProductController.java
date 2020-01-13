@@ -32,11 +32,10 @@ public class ProductController {
     @Autowired
     private ProductDao productDao;
 
-    private final ProductService ps = new ProductService();
-
+    @Autowired
+    private ProductService ps;
 
     //Récupérer la liste des produits
-
     @RequestMapping(value = "/Produits", method = RequestMethod.GET)
     public MappingJacksonValue listeProduits() {
 
@@ -103,7 +102,6 @@ public class ProductController {
         productDao.save(product);
     }
 
-
     //Pour les tests
     @GetMapping(value = "test/produits/{prix}")
     public List<Product> testeDeRequetes(@PathVariable int prix) {
@@ -111,26 +109,11 @@ public class ProductController {
         return productDao.chercherUnProduitCher(prix);
     }
 
-
     @GetMapping(value = "/AdminProduits")
-    //public List<String>calculerMargeProduit(){
-    //List<String> Lstring = new ArrayList<String>();
-
-    public Map<Product, Integer> calculerMargeProduit()
+    public Map<Product, Integer> listerMargeProduit()
     {
-        List<Product> Lproduit = productDao.findAll();
-        Map<Product, Integer> liste = new HashMap<>();
+        return ps.afficherAdminProduits();
 
-        for (Product p : Lproduit) {
-
-            Integer marge = ps.margeProduit(p); //p.getPrix() - p.getPrixAchat();
-            liste.put(p, marge); // p.margeProduit());
-
-//            String str = p.afficherMargeProduit();
-//            Lstring.add(str);
-        }
-        // return Lstring;
-        return liste;
     }
 
 }
