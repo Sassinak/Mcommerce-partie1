@@ -1,3 +1,4 @@
+/*
 package com.ecommerce.microcommerce.configuration;
 
 import org.springframework.context.annotation.Bean;
@@ -19,4 +20,4 @@ public class SwaggerConfig {
                 .paths(PathSelectors.regex("/Produits.*")) //pages "publiques"
                 .build();
     }
-}
+}*/

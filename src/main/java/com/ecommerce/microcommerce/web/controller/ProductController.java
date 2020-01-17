@@ -3,13 +3,14 @@ package com.ecommerce.microcommerce.web.controller;
 import com.ecommerce.microcommerce.dao.ProductDao;
 import com.ecommerce.microcommerce.model.Product;
 import com.ecommerce.microcommerce.service.ProductService;
+import com.ecommerce.microcommerce.service.RestService;
 import com.ecommerce.microcommerce.web.exceptions.ProduitGratuitException;
 import com.ecommerce.microcommerce.web.exceptions.ProduitIntrouvableException;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+//import io.swagger.annotations.Api;
+//import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJacksonValue;
@@ -24,7 +25,7 @@ import java.util.Map;
 
 //cette classe cree/affiche les pages de notre micro-site
 
-@Api( value = "description: API pour les opérations CRUD sur les produits.")
+//@Api( value = "description: API pour les opérations CRUD sur les produits.")
 
 @RestController
 public class ProductController {
@@ -34,6 +35,15 @@ public class ProductController {
 
     @Autowired
     private ProductService ps;
+
+    @Autowired
+    private RestService rs ;
+
+    //exercices pour REST
+    @GetMapping(value="/jsonPosts")
+    public String getJSONfromPosts(){
+        return rs.getPostsPlainJSON();
+    }
 
     //Récupérer la liste des produits
     @RequestMapping(value = "/Produits", method = RequestMethod.GET)
@@ -56,7 +66,7 @@ public class ProductController {
 
 
     //Récupérer un produit par son Id
-    @ApiOperation(value = "Récupère un produit grâce à son ID à condition que celui-ci soit en stock!")
+    //@ApiOperation(value = "Récupère un produit grâce à son ID à condition que celui-ci soit en stock!")
     @GetMapping(value = "/Produits/{id}")
 
     public Product afficherUnProduit(@PathVariable int id) {
@@ -90,11 +100,11 @@ public class ProductController {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping(value = "/Produits/{id}")
+/*    @DeleteMapping(value = "/Produits/{id}")
     public void supprimerProduit(@PathVariable int id) {
 
         productDao.delete(id);
-    }
+    }*/
 
     @PutMapping(value = "/Produits")
     public void updateProduit(@RequestBody Product product) {

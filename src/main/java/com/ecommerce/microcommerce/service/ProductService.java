@@ -1,9 +1,7 @@
 package com.ecommerce.microcommerce.service;
 
-import antlr.ASTNULLType;
 import com.ecommerce.microcommerce.dao.ProductDao;
 import com.ecommerce.microcommerce.model.Product;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -22,11 +20,11 @@ public class ProductService{ //extends Product{
 
    private final ProductDao productDao;
 
-    public ProductService(ProductDao pd){
+   public ProductService(ProductDao pd){
         this.productDao = pd;
     }
 
-    public Map<Product, Integer> afficherAdminProduits(){
+   public Map<Product, Integer> afficherAdminProduits(){
 
         List<Product> Lproduit = this.productDao.findAll();
         Map<Product, Integer> liste = new HashMap<>();
