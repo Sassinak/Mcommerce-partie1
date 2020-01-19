@@ -13,15 +13,17 @@ import java.net.Proxy;
 public class RestServiceConfig {
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder){
-        SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
+       /* SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
         InetSocketAddress address = new InetSocketAddress(
                 "proxy-internet-vol.pub.desjardins.com", 8080);
         Proxy proxy = new Proxy(Proxy.Type.HTTP, address);
-        factory.setProxy(proxy);
-
+               factory.setProxy(proxy);
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setRequestFactory(factory);
         return restTemplate;
+
+        */
+       return restTemplateBuilder.build();
     }
 
 }

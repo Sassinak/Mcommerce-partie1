@@ -40,9 +40,13 @@ public class ProductController {
     private RestService rs ;
 
     //exercices pour REST
-    @GetMapping(value="/jsonPosts")
-    public String getJSONfromPosts(){
-        return rs.getPostsPlainJSON();
+    @GetMapping(value="/jsonPosts/{id}")
+    public String getJSONfromPosts(@PathVariable int id){
+        try {
+            return rs.getPostsPlainJSON(id);
+        } catch (Exception ex) {
+            return "erreur";
+        }
     }
 
     //Récupérer la liste des produits
@@ -63,7 +67,6 @@ public class ProductController {
     public List<Product> trierProduitsParOrdreAlphabetique() {
         return productDao.findAllByOrderByNomAsc();
     }
-
 
     //Récupérer un produit par son Id
     //@ApiOperation(value = "Récupère un produit grâce à son ID à condition que celui-ci soit en stock!")
